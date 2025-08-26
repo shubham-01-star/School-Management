@@ -1,48 +1,48 @@
 # 🏫 Node School API
 
 A robust **Node.js** backend API for managing schools, built with **TypeScript**, **Express**, and **TypeORM**.  
-Supports adding schools, listing them, and validating data efficiently.  
+Supports adding schools, listing them by coordinates, and validating data efficiently.  
 
 ---
 
-## 🚀 Features
+## ✨ Features
 
 - ➕ Add a new school with **name, address, latitude, longitude**  
-- 🔍 List schools based on coordinates  
-- ✅ Validate input data using **custom middleware**  
-- 🗄️ Automatic database schema sync via **TypeORM**  
-- ⚠️ Clean error handling using **custom AppError class**  
-- ☁️ Ready for production deployment (supports **Render**, **Heroku**, etc.)  
+- 🔍 List schools near given coordinates  
+- ✅ Input validation using **custom middleware**  
+- 🗄️ Automatic schema sync with **TypeORM**  
+- ⚠️ Centralized error handling using `AppError` class  
+- ☁️ Ready for **production deployment** (Render, Heroku, etc.)  
 
 ---
 
 ## 🛠 Tech Stack
 
-| Layer           | Technology                   |
-|-----------------|------------------------------|
-| Backend         | Node.js + TypeScript         |
-| Framework       | Express                      |
-| Database        | MySQL                        |
-| ORM             | TypeORM                      |
-| Validation      | Custom Middleware            |
-| Error Handling  | AppError Utility Class       |
-| Deployment      | Render / Any Node.js host    |
+| Layer          | Technology        |
+|----------------|-------------------|
+| Backend        | Node.js + TypeScript |
+| Framework      | Express           |
+| Database       | MySQL             |
+| ORM            | TypeORM           |
+| Validation     | Custom Middleware |
+| Error Handling | AppError Utility  |
+| Deployment     | Render / Any Node.js host |
 
 ---
 
-## ⚙️ Setup
+## ⚙️ Setup & Installation
 
-### 1. Clone the repo
+### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/shubham-01-star/School-Management.git
-cd node-school-api
-2. Install dependencies
+cd School-Management
+2️⃣ Install Dependencies
 bash
 Copy
 Edit
 npm install
-3. Configure Environment
-Create a .env file in project root:
+3️⃣ Configure Environment
+Create a .env file in the root:
 
 env
 Copy
@@ -53,24 +53,22 @@ DB_USER=root
 DB_PASS=yourpassword
 DB_NAME=schooldb
 PORT=3000
-4. Run migrations / schema sync
+4️⃣ Run Schema Sync
 bash
 Copy
 Edit
 npm run sync:schema
-5. Run locally
+5️⃣ Start the Server
 bash
 Copy
 Edit
-# Dev mode (with nodemon + ts-node)
+# Development (nodemon + ts-node)
 npm run dev
 
-# Build + Run
+# Production Build
 npm run build
 npm start
 🌐 Deployment (Render Example)
-In Render dashboard:
-
 Build Command:
 
 bash
@@ -83,25 +81,23 @@ bash
 Copy
 Edit
 npm start
-Ensure your server listens on process.env.PORT.
+⚠️ Ensure server listens on process.env.PORT
 
 📌 API Endpoints
 1️⃣ Add School
 POST /api/addSchool
 
-Request:
-
+Request
 json
 Copy
 Edit
 {
   "name": "Mode2 School",
-  "address": "Barakhamba Road , sector 14 , Delhi",
+  "address": "Barakhamba Road, Sector 14, Delhi",
   "latitude": 28.6315,
   "longitude": 77.2200
 }
-Curl Example:
-
+Curl Example
 bash
 Copy
 Edit
@@ -109,24 +105,22 @@ curl --location 'https://school-management-wz47.onrender.com/api/addSchool' \
 --header 'Content-Type: application/json' \
 --data '{
   "name": "Mode2 School",
-  "address": "Barakhamba Road , sector 14 , Delhi",
+  "address": "Barakhamba Road, Sector 14, Delhi",
   "latitude": 28.6315,
   "longitude": 77.2200
 }'
-✅ Success Response:
-
+✅ Success Response
 json
 Copy
 Edit
 {
   "id": 3,
   "name": "Mode2 School",
-  "address": "Barakhamba Road , sector 14 , Delhi",
+  "address": "Barakhamba Road, Sector 14, Delhi",
   "latitude": 28.6315,
   "longitude": 77.2200
 }
-❌ Error Response:
-
+❌ Error Response
 json
 Copy
 Edit
@@ -136,14 +130,12 @@ Edit
 2️⃣ List Schools
 GET /api/listSchools?lat=28&lng=77.23
 
-Curl Example:
-
+Curl Example
 bash
 Copy
 Edit
 curl --location 'https://school-management-wz47.onrender.com/api/listSchools?lat=28&lng=77.23'
-✅ Success Response:
-
+✅ Success Response
 json
 Copy
 Edit
@@ -164,11 +156,9 @@ Edit
   }
 ]
 🧪 Testing with Postman
-You can test APIs using Postman.
+Open Postman → Import a new collection
 
-Open Postman → Import a new collection.
-
-Create two requests inside collection:
+Create two requests inside:
 
 ➕ Add School
 Method: POST
@@ -182,16 +172,21 @@ Copy
 Edit
 {
   "name": "Mode2 School",
-  "address": "Barakhamba Road , sector 14 , Delhi",
+  "address": "Barakhamba Road, Sector 14, Delhi",
   "latitude": 28.6315,
   "longitude": 77.2200
 }
 🔍 List Schools
 Method: GET
 
-URL: https://school-management-wz47.onrender.com/api/listSchools?lat=28&lng=77.23
+URL:
 
-✅ Save the collection as School-Management-API and share with stakeholders.
+bash
+Copy
+Edit
+https://school-management-wz47.onrender.com/api/listSchools?lat=28&lng=77.23
+👉 Full Postman Collection:
+Postman Collection Link: https://warped-robot-72486.postman.co/workspace/Team-Workspace~2aa89ee4-9903-461f-8eef-c0a69a32bab9/request/26922555-c0154769-9979-492b-bc1d-8e35c3a1e845?action=share&creator=26922555&ctx=documentation
 
 📄 License
 MIT License © 2025
