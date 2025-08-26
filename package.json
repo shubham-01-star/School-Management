@@ -4,10 +4,12 @@
   "description": "Develop Node.js APIs for School Management",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
     "dev": "nodemon --watch src --exec ts-node src/server.ts",
     "sync:schema": "npx ts-node ./node_modules/typeorm/cli.js schema:sync -d src/ormconfig.ts"
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shubham-01-star/School-Management.git"
