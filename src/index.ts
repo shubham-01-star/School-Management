@@ -1,8 +1,9 @@
 import app from './app';
 import 'reflect-metadata';
 import { AppDataSource } from './ormconfig';
+import * as dotenv from 'dotenv';
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 AppDataSource.initialize()
   .then(() => {
