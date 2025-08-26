@@ -16,7 +16,7 @@ export type ListSchoolsParams = {
   search?: string;
   page?: number;
   limit?: number;
-  orderBy?: 'distance' | 'name' | 'created_at';
+  orderBy?: 'distance' | 'name' ;
   orderDir?: 'ASC' | 'DESC';
 };
 
@@ -80,7 +80,7 @@ export class SchoolService {
     if (!Number.isFinite(userLng) || userLng < -180 || userLng > 180) throw new AppError('userLng invalid');
 
     const { page, limit, offset } = normalizePagination(params.page, params.limit, 100);
-    const orderBy = (params.orderBy ?? 'distance') as 'distance' | 'name' | 'created_at';
+    const orderBy = (params.orderBy ?? 'distance') as 'distance' | 'name';
     const orderDir = (params.orderDir ?? 'ASC') as 'ASC' | 'DESC';
 
     const distanceExpr =
@@ -97,8 +97,8 @@ export class SchoolService {
         's.address AS address',
         's.latitude AS latitude',
         's.longitude AS longitude',
-        's.created_at AS created_at',
-        's.updated_at AS updated_at'
+        // 's.created_at AS created_at',
+        // 's.updated_at AS updated_at'
       ])
       .addSelect(distanceExpr, 'distance_km')
       .setParameters({ lat: userLat, lng: userLng });
@@ -112,7 +112,7 @@ export class SchoolService {
     // order
     if (orderBy === 'distance') qb = qb.orderBy('distance_km', orderDir);
     else if (orderBy === 'name') qb = qb.orderBy('s.name', orderDir);
-    else qb = qb.orderBy('s.created_at', orderDir);
+    // else qb = qb.orderBy('s.created_at', orderDir);
 
     qb = qb.groupBy('s.id').offset(offset).limit(limit);
 
@@ -124,8 +124,8 @@ export class SchoolService {
       address: r.address,
       latitude: Number(r.latitude),
       longitude: Number(r.longitude),
-      created_at: r.created_at,
-      updated_at: r.updated_at,
+      // created_at: r.created_at,
+      // updated_at: r.updated_at,
       distance_km: Number(Number(r.distance_km).toFixed(3))
     }));
 
